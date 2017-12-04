@@ -12,7 +12,7 @@ server.get('/lol', (req, res, next) => {
     next()
 })
 
-server.listen(6666, `192.168.1.69`,() => {
+server.listen(8080, () => {
     console.log('LOUD AND CLEAR')
 })
 
