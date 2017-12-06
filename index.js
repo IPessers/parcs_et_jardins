@@ -1,13 +1,10 @@
-
-const lodash = require('lodash')
+const lodash = require('lodash');
 
 const obj = {
-    lol: 'haha'
-}
+  lol: 'haha',
+};
 
-var express = require('express')
+const newObj = lodash.cloneDeep(obj);
 
-const newObj = lodash.cloneDeep(obj)
-
-console.log(obj)
-console.log(newObj)
+console.log(obj);
+console.log(newObj);
