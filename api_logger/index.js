@@ -1,5 +1,5 @@
-const { info } = require('./logger')
+const { info } = require('./logger');
 
-module.exports = { 
-    info
-}
+module.exports = {
+  info,
+};

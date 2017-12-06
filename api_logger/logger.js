@@ -1,24 +1,23 @@
-const winston = require('winston')
+const winston = require('winston');
 
 
-function info (route, message){
-    if(!route || !message ) throw new Error('Given parameters b*tch')
-    winston.info(`Route ${route} says '${message}'`)
-
+function info(route, message) {
+  if (!route || !message) throw new Error('Given parameters b*tch');
+  winston.info(`Route ${route} says '${message}'`);
 }
-info.lol = 'haha'
+
+info.lol = 'haha';
 
 class UneClasse {
-    constructor(unParam) {
-        this.unPrama = unParam
-        
-    }
-    laugh() {
-        console.log(this.unPrama)
-    }
+  constructor(unParam) {
+    this.unPrama = unParam;
+  }
+  laugh() {
+    console.log(this.unPrama);
+  }
 }
 
-module.exports= {
-    info,
-    UneClasse,
-}
+module.exports = {
+  info,
+  UneClasse,
+};
