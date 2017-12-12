@@ -1,0 +1,15 @@
+{
+  "id": "/feuillage",
+  "type": "object",
+  "properties": {
+    "couleur": {
+      "type": "array",
+      "items": ["bleu", "bleu-gris", "brun", "gris", "selon cultivar", "vert", "vert bleuté", "vert clair", "vert foncé", "vert-gris", "vert-jaune", "vert-rouge"]
+    },
+    "resistance_froid": ["caduque", "persistant", "marcescent", "semi-persistant"],
+    "limbe": {
+      "type": "array",
+      "items": ["aciculaire", "alterne", "circulaire", "composé", "cordé", "creux", "duveteux", "effilé", "elliptique", "gaufré", "lancéolé", "linéaire", "obovale", "ovoïde", "palmé", "piquant", "sagitté", "spatulé" ]
+    }
+  }
+}

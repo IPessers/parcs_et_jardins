@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "express": "^4.16.2",
+    "jsonschema": "^1.2.2",
     "lodash": "^4.17.4",
     "winston": "^2.4.0"
   }
