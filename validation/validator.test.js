@@ -6,7 +6,7 @@ describe('the json schema validator', () => {
     assert.throws(() => validator.validatePlante());
   });
 
-  it('should not valid all properties of type string are not a string', () => {
+  it('should not valid when all properties are of invalid type', () => {
     const invalidData = {
       categorie: 4,
       sousCategorie: 4,
@@ -15,8 +15,8 @@ describe('the json schema validator', () => {
       cultivarPrincipal: 4,
       cultivarSecondaires: [4],
       indiceRusticite: 4,
-      envergure: 80,
-      hauteur: 60,
+      envergure: 'invalid',
+      hauteur: 'invalid',
       port: [4],
       feuillage: {
         couleur: 4,
@@ -36,10 +36,10 @@ describe('the json schema validator', () => {
       sol: {
         humus: [4],
         tauxHumus: [4],
-        ph: 6,
+        ph: 'invalid',
       },
       exposition: [4],
-      nombrePlantations: 3,
+      nombrePlantations: 'invalid',
       utilisations: [4],
       remarque: 4,
       representation: 4,
@@ -47,183 +47,7 @@ describe('the json schema validator', () => {
 
     const result = validator.validatePlante(invalidData);
 
-    assert.notEqual(result.errors.length, 0);
-  });
-
-  it('should not valid all properties of type number are not a number', () => {
-    const invalidData = {
-      categorie: 'Fougère',
-      sousCategorie: 'persistant',
-      nomLatin: 'Fougus communum',
-      nom: 'Foougère commune',
-      cultivarPrincipal: 'alba',
-      cultivarSecondaires: ['bleu', 'rouge'],
-      indiceRusticite: 'normal',
-      envergure: 'broken',
-      hauteur: 'broken',
-      port: ['arque', 'étalé'],
-      feuillage: {
-        couleur: 'vert-gris',
-        resistanceFroid: 'persistant',
-        limbe: ['effilé', 'alterne'],
-      },
-      floraison: {
-        debutFloraison: 'apr',
-        finFloraison: 'jun',
-        couleur: ['lila', 'jaune'],
-      },
-      fruit: {
-        nom: 'baie',
-        debutPeriode: 'jul',
-        finPeriode: 'aug',
-      },
-      sol: {
-        humus: ['frais', 'marécageux'],
-        tauxHumus: ['très faible', 'faible'],
-        ph: 'broken',
-      },
-      exposition: ['soleil', 'mi-ombre'],
-      nombrePlantations: 'broken',
-      utilisations: ['bac', 'massif'],
-      remarque: 'cette plante est fictionnelle',
-      representation: 'myLittleFougere.jpg',
-    };
-
-    const result = validator.validatePlante(invalidData);
-
-    assert.notEqual(result.errors.length, 0);
-  });
-
-  it('should not valid not an enum', () => {
-    const invalidData = {
-      categorie: 'broken',
-      sousCategorie: 'broken',
-      nomLatin: 'Fougus communum',
-      nom: 'Foougère commune',
-      cultivarPrincipal: 'alba',
-      cultivarSecondaires: ['bleu', 'rouge'],
-      indiceRusticite: 'broken',
-      envergure: 80,
-      hauteur: 60,
-      port: ['broken'],
-      feuillage: {
-        couleur: 'broken',
-        resistanceFroid: 'broken',
-        limbe: ['broken'],
-      },
-      floraison: {
-        debutFloraison: 'broken',
-        finFloraison: 'broken',
-        couleur: ['broken'],
-      },
-      fruit: {
-        nom: 'baie',
-        debutPeriode: 'broken',
-        finPeriode: 'broken',
-      },
-      sol: {
-        humus: ['broken'],
-        tauxHumus: ['broken'],
-        ph: 6,
-      },
-      exposition: ['broken'],
-      nombrePlantations: 3,
-      utilisations: ['broken'],
-      remarque: 'cette plante est fictionnelle',
-      representation: 'myLittleFougere.jpg',
-    };
-
-    const result = validator.validatePlante(invalidData);
-
-    assert.notEqual(result.errors.length, 0);
-  });
-
-  it('should not valid to low value for number', () => {
-    const invalidData = {
-      categorie: 'Fougère',
-      sousCategorie: 'persistant',
-      nomLatin: 'Fougus communum',
-      nom: 'Foougère commune',
-      cultivarPrincipal: 'alba',
-      cultivarSecondaires: ['bleu', 'rouge'],
-      indiceRusticite: 'normal',
-      envergure: 0,
-      hauteur: 0,
-      port: ['arque', 'étalé'],
-      feuillage: {
-        couleur: 'vert-gris',
-        resistanceFroid: 'persistant',
-        limbe: ['effilé', 'alterne'],
-      },
-      floraison: {
-        debutFloraison: 'apr',
-        finFloraison: 'jun',
-        couleur: ['lila', 'jaune'],
-      },
-      fruit: {
-        nom: 'baie',
-        debutPeriode: 'jul',
-        finPeriode: 'aug',
-      },
-      sol: {
-        humus: ['frais', 'marécageux'],
-        tauxHumus: ['très faible', 'faible'],
-        ph: 3,
-      },
-      exposition: ['soleil', 'mi-ombre'],
-      nombrePlantations: 0,
-      utilisations: ['bac', 'massif'],
-      remarque: 'cette plante est fictionnelle',
-      representation: 'myLittleFougere.jpg',
-    };
-
-    const result = validator.validatePlante(invalidData);
-
-    assert.notEqual(result.errors.length, 0);
-  });
-
-  it('should not valid to low value for number', () => {
-    const invalidData = {
-      categorie: 'Fougère',
-      sousCategorie: 'persistant',
-      nomLatin: 'Fougus communum',
-      nom: 'Foougère commune',
-      cultivarPrincipal: 'alba',
-      cultivarSecondaires: ['bleu', 'rouge'],
-      indiceRusticite: 'normal',
-      envergure: 80,
-      hauteur: 60,
-      port: ['arque', 'étalé'],
-      feuillage: {
-        couleur: 'vert-gris',
-        resistanceFroid: 'persistant',
-        limbe: ['effilé', 'alterne'],
-      },
-      floraison: {
-        debutFloraison: 'apr',
-        finFloraison: 'jun',
-        couleur: ['lila', 'jaune'],
-      },
-      fruit: {
-        nom: 'baie',
-        debutPeriode: 'jul',
-        finPeriode: 'aug',
-      },
-      sol: {
-        humus: ['frais', 'marécageux'],
-        tauxHumus: ['très faible', 'faible'],
-        ph: 9,
-      },
-      exposition: ['soleil', 'mi-ombre'],
-      nombrePlantations: 3,
-      utilisations: ['bac', 'massif'],
-      remarque: 'cette plante est fictionnelle',
-      representation: 'myLittleFougere.jpg',
-    };
-
-    const result = validator.validatePlante(invalidData);
-
-    assert.notEqual(result.errors.length, 0);
+    assert.equal(result.errors.length, 34);
   });
 
   it('should valid the given plante', () => {
